@@ -28,9 +28,17 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         fetchImage()
-        loginAlert()
+        delay(3) {
+            self.loginAlert()
+        }
+    }
+    
+    func delay(_ delay: Int, closure: @escaping () -> () ) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+            closure()
+        }
     }
     
     func loginAlert() {
